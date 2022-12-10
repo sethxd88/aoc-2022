@@ -105,3 +105,6 @@ str.tap do
      .map { |t| t.reduce(&:+) }
      .tap { |l| puts l.max }
 end
+
+# ref:  https://stackoverflow.com/questions/7339292/ruby-remove-empty-lines-from-string
+# note: tap, reduce, gsub
