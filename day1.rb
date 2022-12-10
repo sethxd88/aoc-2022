@@ -95,9 +95,11 @@
 # 54883
 # "
 #
-# str1 = str
-# str2 = str1.split("\n\n")
-# str2 = str2.map { |t| t.gsub(/\n/, ' ') }
-# str2 = str2.map { |t| t.split }
-# str2 = str2.map { |t| t.map(&:to_i) }
-# str2 = str2.map { |t| t.reduce(&:+) }
+str = File.read("day1-puzzle.txt")
+str1 = str
+str2 = str1.split("\n\n")
+str2 = str2.map { |t| t.gsub(/\n/, ' ') }
+str2 = str2.map { |t| t.split }
+str2 = str2.map { |t| t.map(&:to_i) }
+str2 = str2.map { |t| t.reduce(&:+) }
+puts str2.max
