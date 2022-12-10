@@ -96,10 +96,12 @@
 # "
 #
 str = File.read("day1-puzzle.txt")
-str1 = str
-str2 = str1.split("\n\n")
-str2 = str2.map { |t| t.gsub(/\n/, ' ') }
-str2 = str2.map { |t| t.split }
-str2 = str2.map { |t| t.map(&:to_i) }
-str2 = str2.map { |t| t.reduce(&:+) }
-puts str2.max
+
+str.tap do
+  str.split("\n\n")
+     .map { |t| t.gsub(/\n/, ' ') }
+     .map { |t| t.split }
+     .map { |t| t.map(&:to_i) }
+     .map { |t| t.reduce(&:+) }
+     .tap { |l| puts l.max }
+end
