@@ -74,3 +74,25 @@ end
 
 list.max
 # calories_of_snacks_elves_carry.key(list.max).to_s # fourth
+
+## it wasn't right -_-
+
+# sample of puzzle
+str = "
+7769
+6798
+11685
+10826
+11807
+5786
+7932
+
+54883
+"
+
+str1 = str
+str2 = str1.split("\n\n")
+str2 = str2.map { |t| t.gsub(/\n/, ' ') }
+str2 = str2.map { |t| t.split }
+str2 = str2.map { |t| t.map(&:to_i) }
+str2 = str2.map { |t| t.reduce(&:+) }
