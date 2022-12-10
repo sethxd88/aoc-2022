@@ -1,3 +1,41 @@
+# A for Rock, B for Paper, and C for Scissors
+# X for Rock, Y for Paper, and Z for Scissors
+# 1 for Rock, 2 for Paper, and 3 for Scissors
+# 0 if you lost,
+# 3 if the round was a draw,
+# 6 if you won
+#
+guide = File.read("day2-puzzle.txt")
+
+result_score_mapping =
+  {
+    "X-A": 3,
+    "X-B": 0,
+    "X-C": 6,
+    "Y-A": 6,
+    "Y-B": 3,
+    "Y-C": 0,
+    "Z-A": 0,
+    "Z-B": 6,
+    "Z-C": 3
+  }
+
+list = guide.gsub(/^\n/, '')
+            .split("\n")
+            .map(&:split)
+
+self_score = list.map do |_, y|
+  case y
+  when "X" then 1
+  when "Y" then 2
+  when "Z" then 3
+  end
+end
+
+result_score = list.map { |a, b| result_score_mapping[:"#{b}-#{a}"] }
+
+puts self_score.sum + result_score.sum
+
 # --- Day 2: Rock Paper Scissors --- The Elves begin to set up camp on the
 # beach. To decide whose tent gets to be closest to the snack storage, a giant
 # Rock Paper Scissors tournament is already in progress.
