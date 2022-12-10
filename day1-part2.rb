@@ -1,3 +1,18 @@
+str = File.read("day1-puzzle.txt")
+
+top_3 = []
+
+str.tap do
+  str.split("\n\n")
+     .map { |t| t.gsub(/\n/, ' ') }
+     .map { |t| t.split }
+     .map { |t| t.map(&:to_i) }
+     .map { |t| t.reduce(&:+) }
+     .tap { |x| 3.times { |_| top_3 << x.max && x.delete(x.max) } }
+end
+
+puts top_3.sum
+
 # Your puzzle answer was 71780.
 #
 # The first half of this puzzle is complete! It provides one gold star: *
@@ -19,29 +34,3 @@
 # Find the top three Elves carrying the most Calories. How many Calories are
 # those Elves carrying in total?
 #
-str = File.read("day1-puzzle.txt")
-
-# str = "
-# 7769
-# 6798
-# 11685
-# 10826
-# 11807
-# 5786
-# 7932
-#
-# 54883
-# "
-#
-top_3 = []
-
-str.tap do
-  str.split("\n\n")
-     .map { |t| t.gsub(/\n/, ' ') }
-     .map { |t| t.split }
-     .map { |t| t.map(&:to_i) }
-     .map { |t| t.reduce(&:+) }
-     .tap { |x| 3.times { |_| top_3 << x.max && x.delete(x.max) } }
-end
-
-puts top_3.sum

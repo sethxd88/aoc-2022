@@ -1,4 +1,43 @@
+# solution 2
+
+str = File.read("day1-puzzle.txt")
+
+str.tap do
+  str.split("\n\n")
+     .map { |t| t.gsub(/\n/, ' ') }
+     .map { |t| t.split }
+     .map { |t| t.map(&:to_i) }
+     .map { |t| t.reduce(&:+) }
+     .tap { |l| puts l.max }
+end
+
+# ref:  https://stackoverflow.com/questions/7339292/ruby-remove-empty-lines-from-string
+# note: tap, reduce, gsub
+
+# stupid solution 1
+#
+# calories_of_snacks_elves_carry =
+#   {
+#     first:  [1000, 2000, 3000],
+#     second: [4000],
+#     third:  [5000, 6000],
+#     fourth: [7000, 8000, 9000],
+#     fifth:  [10000]
+#   }
+#
+# calories_of_snacks_elves_carry.tap do
+#   calories_of_snacks_elves_carry.update(calories_of_snacks_elves_carry) { |k, v| v.sum }
+#   calories_of_snacks_elves_carry.each_with_object(total_calories_list = []) { |(k, v), a| a << [k, v] }
+#   total_calories_list.each_with_object(list = []) { |(_, v), a| a << v }
+# end
+#
+# list.max
+# calories_of_snacks_elves_carry.key(list.max).to_s # fourth
+
+## it wasn't right -_-
+
 # --- Day 1: Calorie Counting --- Santa's reindeer typically eat regular
+#
 # reindeer food, but they need a lot of magical energy to deliver presents on
 # Christmas. For that, their favorite snack is a special type of star fruit
 # that only grows deep in the jungle. The Elves have brought you on their
@@ -56,55 +95,3 @@
 #
 # Find the Elf carrying the most Calories. How many total Calories is that Elf
 # carrying?
-
-# stupid solution 1
-#
-# calories_of_snacks_elves_carry =
-#   {
-#     first:  [1000, 2000, 3000],
-#     second: [4000],
-#     third:  [5000, 6000],
-#     fourth: [7000, 8000, 9000],
-#     fifth:  [10000]
-#   }
-#
-# calories_of_snacks_elves_carry.tap do
-#   calories_of_snacks_elves_carry.update(calories_of_snacks_elves_carry) { |k, v| v.sum }
-#   calories_of_snacks_elves_carry.each_with_object(total_calories_list = []) { |(k, v), a| a << [k, v] }
-#   total_calories_list.each_with_object(list = []) { |(_, v), a| a << v }
-# end
-#
-# list.max
-# calories_of_snacks_elves_carry.key(list.max).to_s # fourth
-
-## it wasn't right -_-
-
-# solution 2
-#
-# sample of puzzle
-#
-# str = "
-# 7769
-# 6798
-# 11685
-# 10826
-# 11807
-# 5786
-# 7932
-#
-# 54883
-# "
-#
-str = File.read("day1-puzzle.txt")
-
-str.tap do
-  str.split("\n\n")
-     .map { |t| t.gsub(/\n/, ' ') }
-     .map { |t| t.split }
-     .map { |t| t.map(&:to_i) }
-     .map { |t| t.reduce(&:+) }
-     .tap { |l| puts l.max }
-end
-
-# ref:  https://stackoverflow.com/questions/7339292/ruby-remove-empty-lines-from-string
-# note: tap, reduce, gsub
