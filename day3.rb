@@ -1,3 +1,20 @@
+rucksack = File.read("day3-puzzle.txt")
+
+priority_mapping = {}
+
+("a".."z").each_with_index { |a, i| priority_mapping.store(a, i + 1) }
+("A".."Z").each_with_index { |a, i| priority_mapping.store(a, i + 27) }
+
+rucksack.tap do
+  priority = rucksack.gsub(/\n/, ",")
+                     .split(",")
+                     .map { |x| ["#{x[0..(x.size / 2)]}", "#{x[(x.size / 2)..-1]}"] }
+                     .map { |a, b| a.split('').map { |e| Regexp.new(e).match(b) }.compact!.first[0] }
+
+  list = priority.map { |e| priority_mapping[e] }
+
+  p list.sum
+end
 
 # --- Day 3: Rucksack Reorganization --- One Elf has the important job of
 # loading all of the rucksacks with supplies for the jungle journey.
