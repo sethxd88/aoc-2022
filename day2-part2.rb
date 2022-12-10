@@ -1,3 +1,44 @@
+# X means you need to lose,
+# Y means you need to end the round in a draw,
+# Z means you need to win.
+
+guide = File.read("day2-puzzle.txt")
+
+list = guide.gsub(/^\n/, '')
+            .split("\n")
+            .map(&:split)
+
+result_score = list.map do |_, y|
+  case y
+  when "X" then 0
+  when "Y" then 3
+  when "Z" then 6
+  end
+end
+
+self_score_mapping =
+  {
+    "X-A": "Z",
+    "X-B": "X",
+    "X-C": "Y",
+    "Y-A": "X",
+    "Y-B": "Y",
+    "Y-C": "Z",
+    "Z-A": "Y",
+    "Z-B": "Z",
+    "Z-C": "X"
+  }
+
+self_score = list.map { |a, b| self_score_mapping[:"#{b}-#{a}"] }
+                 .map do |y|
+                   case y
+                   when "X" then 1
+                   when "Y" then 2
+                   when "Z" then 3
+                   end
+                 end
+
+puts self_score.sum + result_score.sum
 
 # --- Part Two --- The Elf finishes helping with the tent and sneaks back over
 # to you. "Anyway, the second column says how the round needs to end: X means
