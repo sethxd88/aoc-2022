@@ -1,4 +1,4 @@
-rucksack = File.read("day3-puzzle.txt")
+rucksack = File.read("./puzzle/day3.txt")
 
 priority_mapping = {}
 

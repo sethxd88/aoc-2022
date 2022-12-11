@@ -5,7 +5,7 @@
 # 3 if the round was a draw,
 # 6 if you won
 #
-guide = File.read("day2-puzzle.txt")
+guide = File.read("./puzzle/day2.txt")
 
 result_score_mapping =
   {

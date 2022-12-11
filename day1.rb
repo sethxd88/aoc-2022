@@ -1,6 +1,6 @@
 # solution 2
 
-str = File.read("day1-puzzle.txt")
+str = File.read("./puzzle/day1.txt")
 
 str.tap do
   str.split("\n\n")

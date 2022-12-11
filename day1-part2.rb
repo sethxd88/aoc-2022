@@ -1,4 +1,4 @@
-str = File.read("day1-puzzle.txt")
+str = File.read("./puzzle/day1.txt")
 
 top_3 = []
 

@@ -2,7 +2,7 @@
 # Y means you need to end the round in a draw,
 # Z means you need to win.
 
-guide = File.read("day2-puzzle.txt")
+guide = File.read("./puzzle/day2.txt")
 
 list = guide.gsub(/^\n/, '')
             .split("\n")
